@@ -5,76 +5,55 @@ import java.util.ArrayList;
 // Library class definition
 public class Library {
     // Class attributes
-    private String name;
-    private String address;
-    private String phone;
+//    private String name;
+//    private String address;
+//    private String phone;
     private ArrayList<Book> books;
 
     // Class constructor
-    public Library(String name, String address, String phone, ArrayList<Book> books) {
-        this.name = name;
-        this.address = address;
-        this.phone = phone;
+    public Library( ArrayList<Book> books) {
+
         this.books = books;
     }
 
     // Class getters and setters
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
 
     public ArrayList<Book> getBooks() {
         return books;
     }
-
-    public void setBooks(ArrayList<Book> books) {
-        this.books = books;
-    }
-
     // Kitap ekleme metodu
     public void addBook(Book book) {
         books.add(book);
         System.out.println(book.getName() + " isimli kitap kütüphaneye eklendi.");
     }
+    // Method to update a book
+    public void updateBook( Book oldBook, Book newBook) {
+        int index = books.indexOf(oldBook);
+        if(index != -1) {
+            books.set(index, newBook);
+            System.out.println("Kitap başarıyla güncellendi.");
+        } else {
+            System.out.println("Kitap bulunamadı.");
+        }
+    }
 
     // Kitap silme metodu
-    public void delBook(Book book) {
+    public void deleteBook(Book book) {
         if (books.remove(book)) {
             System.out.println(book.getName() + " isimli kitap kütüphaneden silindi.");
         } else {
             System.out.println("Kitap bulunamadı.");
         }
     }
+    //
 
     // Class toString method
+
 
     @Override
     public String toString() {
         return "Library{" +
-                "name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
-                ", books=" + books +
+                "books=" + books +
                 '}';
     }
 }
